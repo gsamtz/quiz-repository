@@ -1,5 +1,6 @@
 package com.gsam.WebQuizEngine.dao;
 
+import com.gsam.WebQuizEngine.exception.QuizNotFoundException;
 import com.gsam.WebQuizEngine.model.Quiz;
 import com.gsam.WebQuizEngine.model.QuizDTO;
 import com.gsam.WebQuizEngine.records.Submission;
@@ -51,7 +52,7 @@ public class QuizDAOImpl implements QuizDAO {
             return convertedQuiz;
         }
         // implement custom FileNotFoundException with ExceptionHandler
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        throw new QuizNotFoundException("Quiz not found id=" + id);
     }
 
     @Override
